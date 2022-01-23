@@ -19,7 +19,7 @@ extern test_func test_priority_donate_sema;
 extern test_func test_priority_donate_nest;
 extern test_func test_priority_donate_lower;
 extern test_func test_priority_donate_chain;
-extern test_func test_priority_fifo;
+extern test_func test_priority_scheduling;
 extern test_func test_priority_preempt;
 extern test_func test_priority_sema;
 extern test_func test_priority_condvar;
@@ -32,6 +32,7 @@ extern test_func test_mlfqs_fair_20;
 extern test_func test_mlfqs_nice_2;
 extern test_func test_mlfqs_nice_10;
 extern test_func test_mlfqs_block;
+extern test_func test_priority_scheduling;
 
 void msg (const char *, ...);
 void fail (const char *, ...);

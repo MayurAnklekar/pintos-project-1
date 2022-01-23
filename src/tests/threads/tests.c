@@ -25,7 +25,7 @@ static const struct test tests[] =
     {"priority-donate-sema", test_priority_donate_sema},
     {"priority-donate-lower", test_priority_donate_lower},
     {"priority-donate-chain", test_priority_donate_chain},
-    {"priority-fifo", test_priority_fifo},
+    {"priority-scheduling", test_priority_scheduling},
     {"priority-preempt", test_priority_preempt},
     {"priority-sema", test_priority_sema},
     {"priority-condvar", test_priority_condvar},
@@ -38,6 +38,7 @@ static const struct test tests[] =
     {"mlfqs-nice-2", test_mlfqs_nice_2},
     {"mlfqs-nice-10", test_mlfqs_nice_10},
     {"mlfqs-block", test_mlfqs_block},
+    
   };
 
 static const char *test_name;

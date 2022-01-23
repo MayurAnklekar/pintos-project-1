@@ -29,15 +29,12 @@ struct simple_thread_data
 static thread_func simple_thread_func;
 
 void
-test_priority_fifo (void) 
+test_priority_scheduling (void) 
 {
   struct simple_thread_data data[THREAD_CNT];
   struct lock lock;
   int *output, *op;
   int i, cnt;
-
-  /* This test does not work with the MLFQS. */
-  ASSERT (!thread_mlfqs);
 
   /* Make sure our priority is the default. */
   ASSERT (thread_get_priority () == PRI_DEFAULT);
@@ -50,7 +47,7 @@ test_priority_fifo (void)
   ASSERT (output != NULL);
   lock_init (&lock);
 
-  thread_set_priority (PRI_DEFAULT + 2);
+  thread_set_priority (PRI_DEFAULT+2);
   for (i = 0; i < THREAD_CNT; i++) 
     {
       char name[16];
@@ -64,8 +61,6 @@ test_priority_fifo (void)
     }
 
   thread_set_priority (PRI_DEFAULT);
-  /* All the other threads now run to termination here. */
-  ASSERT (lock.holder == NULL);
 
   cnt = 0;
   for (; output < op; output++) 
@@ -75,11 +70,12 @@ test_priority_fifo (void)
       ASSERT (*output >= 0 && *output < THREAD_CNT);
       d = data + *output;
       if (cnt % THREAD_CNT == 0)
-        printf ("(priority-fifo) iteration:");
+        printf ("(priority-scheduling) iteration %d: ", d->iterations);
       printf (" %d", d->id);
       if (++cnt % THREAD_CNT == 0)
         printf ("\n");
       d->iterations++;
+      
     }
 }
 
